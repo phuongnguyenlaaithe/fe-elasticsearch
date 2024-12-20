@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .google-search-clone {
+    text-align: center;
+  }
+  
+  .main {
+    margin-top: 20px;
+  }
+  
+  .logo {
+    width: 270px;
+    margin-bottom: 20px;
+  }
+  
+  .buttons {
+    margin-top: 20px;
+  }
+  
+  .buttons button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #dfe1e5;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #5f6368;
+    cursor: pointer;
+  }
+  
+  .buttons button:hover {
+    background-color: #f1f3f4;
+  }
+  
+
+  
+  
