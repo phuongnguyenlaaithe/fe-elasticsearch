@@ -45,25 +45,34 @@ const SearchResults = () => {
         />
       <div className="search-results">
         <ul>
-          {results.map((result, index) => (
-            <li key={index} onClick={() => toggleContent(index)}>
-              <p><strong>Tác giả:</strong> {result.author}</p>
-              <p><strong>Thể loại:</strong> {result.poem_form}</p>
-              <p><strong>Thời kỳ:</strong> {result.period}</p>
-              <a href={result.link} target="_blank" rel="noopener noreferrer">
-                <h3 style={{ textAlign: 'center', cursor: 'pointer' }}>
-                  <strong>{result.title}</strong>
+          {results.map((result, index) => {
+            const fields = Object.entries(result);
+            const title = fields[0][1];
+            const contentFields = fields.slice(1);
+            const previewContent = contentFields.map(([key, value]) => `${key}: ${value}`).join(' ').slice(0, 200) + '...';
+
+            return (
+              <li key={index} onClick={() => toggleContent(index)}>
+                <h3 className="result-title">
+                  <strong>{title}</strong>
                 </h3>
-              </a>
-              {expandedIndex === index && (
-                <p style={{ textAlign: 'center' }}>
-                  {result.content.split('\n').map((line, i) => <span key={i}>{line}<br /></span>)}
-                </p>
-              )}
-            </li>
-          ))}
+                {expandedIndex !== index && (
+                  <p className="result-preview">{previewContent}</p>
+                )}
+                {expandedIndex === index && (
+                  <div className="result-content">
+                    {contentFields.map(([key, value], i) => (
+                      <p key={i}>
+                        <strong>{key}:</strong> {value}
+                      </p>
+                    ))}
+                  </div>
+                )}
+              </li>
+            );
+          })}
         </ul>
-        <div className="pagination" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <div className="pagination">
           <button onClick={() => setPage((prev) => Math.max(prev - 1, 1))}>Previous</button>
           <span style={{ margin: '0 10px' }}>Page {page}</span>
           <button onClick={() => setPage((prev) => prev + 1)}>Next</button>
