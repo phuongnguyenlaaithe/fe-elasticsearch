@@ -47,17 +47,17 @@ const SearchResults = () => {
         <ul>
           {results.map((result, index) => (
             <li key={index} onClick={() => toggleContent(index)}>
-              <p><strong>Tác giả:</strong> {result.author}</p>
-              <p><strong>Thể loại:</strong> {result.poem_form}</p>
-              <p><strong>Thời kỳ:</strong> {result.period}</p>
-              <a href={result.link} target="_blank" rel="noopener noreferrer">
+              <p><strong>Tác giả:</strong> {result.Author}</p>
+              <p><strong>Thể loại:</strong> {result["Poem Form"]}</p>
+              <p><strong>Thời kỳ:</strong> {result.Period}</p>
+              <a href={result.Link} target="_blank" rel="noopener noreferrer">
                 <h3 style={{ textAlign: 'center', cursor: 'pointer' }}>
-                  <strong>{result.title}</strong>
+                  <strong>{result.Title}</strong>
                 </h3>
               </a>
               {expandedIndex === index && (
                 <p style={{ textAlign: 'center' }}>
-                  {result.content.split('\n').map((line, i) => <span key={i}>{line}<br /></span>)}
+                  {result.Content.split('\n').map((line, i) => <span key={i}>{line}<br /></span>)}
                 </p>
               )}
             </li>
